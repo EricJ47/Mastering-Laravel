@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 
-
 Route::get('/home', function () {
     $blogs = [
         [
@@ -56,8 +55,7 @@ Route::get('about', function () {
     $aboutPage = 'this is about page';
     $aboutPage2 = 'this is second about page';
     return view('home.about', compact('aboutPage', 'aboutPage2'));
-=======
-
+});
 
 route::get('user/{id}', function ($id) {
     return "User " . $id;
@@ -83,4 +81,3 @@ route::group(['prefix' => 'client'], function () {
     });
 
 });
-
