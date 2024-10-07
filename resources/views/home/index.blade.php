@@ -33,5 +33,31 @@
         @endfor
         {{-- @endforeach --}}
     </div>
+
+    @php
+        $data = '';
+    @endphp
+
+{{-- isset testing --}}
+    {{-- @isset($data)
+    <div class="alert alert-success">succes</div>
+        
+    @endisset --}}
+
+{{-- switch case --}}
+    {{-- @switch($data)
+        @case(1)
+        <div class="alert alert-success">succeed</div>
+            @break
+        @case(2)
+        <div class="alert alert-danger">failed</div>
+            @break
+        @default
+        <div class="alert alert-warning">warning</div>
+    @endswitch --}}
+
+@empty($data)
+<div class="alert alert-success">Empty</div>    
+@endempty
 </main>
     @endsection
