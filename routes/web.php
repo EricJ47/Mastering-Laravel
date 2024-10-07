@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\ContactController;
+// use App\Http\Controllers\BlogController;
+// use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -57,7 +57,7 @@ Route::get('/home', function () {
             'status' => 'published',
 
         ],
-        
+
     ];
 
     return view('home.index', compact('blogs'));
@@ -75,7 +75,7 @@ route::get('user/{id}', function ($id) {
     return "User " . $id;
 })->name('user-contact');
 
-Route::get('contact', [ContactController::class,'index']);
+// Route::get('contact', [ContactController::class,'index']);
 
 // Grouping
 route::group(['prefix' => 'client'], function () {
@@ -96,7 +96,8 @@ route::group(['prefix' => 'client'], function () {
 
 
 
-Route::resource('blog', BlogController::class);
+// Route::resource('blog', BlogController::class);
 
-Route::get('/login', [LoginController::class,'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
