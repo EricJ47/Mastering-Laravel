@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +22,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+Route::get('/home', [HomeController::class, 'index']);
+// Route::get('/home', HomeController::class); single action Controller
+
+
+Route::get('about', [AboutController::class, 'index']);
 
 Route::get('/home', function () {
     $blogs = [
@@ -57,13 +70,12 @@ Route::get('about', function () {
     return view('home.about', compact('aboutPage', 'aboutPage2'));
 });
 
+
 route::get('user/{id}', function ($id) {
     return "User " . $id;
 })->name('user-contact');
 
-Route::get('contact', function () {
-    return "<a href='".route('user-contact', 212)."'>Contact</a>";
-});
+Route::get('contact', [ContactController::class,'index']);
 
 // Grouping
 route::group(['prefix' => 'client'], function () {
@@ -81,3 +93,10 @@ route::group(['prefix' => 'client'], function () {
     });
 
 });
+
+
+
+Route::resource('blog', BlogController::class);
+
+Route::get('/login', [LoginController::class,'index'])->name('login');
+
