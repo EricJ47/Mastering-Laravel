@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,53 +24,17 @@ Route::get('/', function () {
 
 
 
-Route::get('/home', function () {
-    $blogs = [
-        [
-            'title' => 'First Blog',
-            'content' => 'First Blog content',
-            'status' => 'published',
-
-        ],
-        [
-            'title' => 'Second Blog',
-            'content' => 'Second Blog content',
-            'status' => 'draft',
-
-        ],
-        [
-            'title' => 'Third Blog',
-            'content' => 'Third Blog content',
-            'status' => 'published',
-
-        ],
-        [
-            'title' => 'fourth Blog',
-            'content' => 'fourth Blog content',
-            'status' => 'published',
-
-        ],
-        
-    ];
-
-    return view('home.index', compact('blogs'));
-});
+Route::get('/home', [HomeController::class, 'index']);
+// Route::get('/home', HomeController::class); single action Controller
 
 
-Route::get('about', function () {
-    $aboutPage = 'this is about page';
-    $aboutPage2 = 'this is second about page';
-    return view('home.about', compact('aboutPage', 'aboutPage2'));
-=======
-
+Route::get('about', [AboutController::class, 'index']);
 
 route::get('user/{id}', function ($id) {
     return "User " . $id;
 })->name('user-contact');
 
-Route::get('contact', function () {
-    return "<a href='".route('user-contact', 212)."'>Contact</a>";
-});
+Route::get('contact', [ContactController::class,'index']);
 
 // Grouping
 route::group(['prefix' => 'client'], function () {
@@ -83,4 +52,9 @@ route::group(['prefix' => 'client'], function () {
     });
 
 });
+
+
+Route::resource('blog', BlogController::class);
+
+Route::get('/login', [LoginController::class,'index'])->name('login');
 
