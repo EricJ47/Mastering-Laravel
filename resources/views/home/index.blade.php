@@ -6,7 +6,7 @@
     <div class="row mt-5">
         {{-- @foreach ($blogs as $item) --}}
         @for ($i = 0; $i < count($blogs); $i++)
-        @if ($blogs[$i]['status'] == 'published')
+        @if ($blogs[$i]['status'] == 1)
             
         <div class="col-md-4">
             
