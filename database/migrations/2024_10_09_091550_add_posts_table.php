@@ -14,9 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->date('published_at')->nullable();
-            $table->integer('user_id');
-            $table->integer('category_id');
+            $table->string('views');
         });
     }
 
