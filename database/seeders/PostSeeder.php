@@ -22,7 +22,9 @@ class PostSeeder extends Seeder
                 'content' => Str::random(100),
                 'status' => 1,
                 'published_at'=> date('Y-m-d H:i:s'),
-                'user_id'=> 1
+                'user_id'=> 1,
+                'category_id'=> (rand(1,3)),
+                'views'=> (rand(1,1000)),
             ]);
         }
         
