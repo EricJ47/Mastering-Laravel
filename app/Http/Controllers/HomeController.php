@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use DB;
 use Illuminate\Http\Request;
 
@@ -100,7 +101,65 @@ class HomeController extends Controller
          * avg
          * sum
          */
-       return DB::table('posts')->sum('views');
+        //    return DB::table('posts')->sum('views');
 
+// access data from model
+        // return Post::all();
+        // return Post::find(10);
+        // return $post->content;
+        // $post = Post::all();
+
+        // foreach ($post as $post) {
+        //     echo $post->title;
+        // }
+
+// Eloquent where
+        // return Post::where('views','>', 400)->get();
+        // return Post::where('views','>', 400)->orWhere('category_id', '1')->get();
+
+// update | saving data | Delete
+        // $post = new Post();
+        // $post->title = 'test';
+        // $post->content = 'test content';
+        // $post->status = 1;
+        // $post->published_at = now();
+        // $post->user_id = 3;
+        // $post->category_id = 1;
+        // $post->views = 777;
+        // $post->save();
+        // dd($post);
+
+        // $post = Post::where('id', 5)->first();
+        // $post->title = 'test update';
+        // $post->content = 'test update';
+        // $post->save();
+        // dd($post);
+
+        // $post = Post::find(3);
+        // $post->delete();
+        // dd('deleted');
+
+        // $post = Post::where('id', 5)->first();
+        // $post->title = 'test update';
+        // $post->content = 'test update';
+        // $post->save();
+
+        // $post = Post::create([
+        //     'title' => 'test create deh' ,
+        //     'content' => 'test create content deh' ,
+        //     'status' => 1,
+        //     'published_at' => now(),
+        //     'user_id' => rand(1, 10),
+        //     'category_id' => rand(1, 3),
+        //     'views' => rand(300, 1000),
+        // ]);
+
+        $post = Post::where('id', 5)->update([
+            'title' => 'test update deh' ,
+            'content' => 'test update content deh' ,
+            'views' => rand(300, 1000),
+        ]);
+
+        dd('anjay');
     }
 }
