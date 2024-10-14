@@ -135,7 +135,7 @@ class HomeController extends Controller
         // $post->save();
         // dd($post);
 
-        // $post = Post::find(3);
+        // $post = Post::find(4);
         // $post->delete();
         // dd('deleted');
 
@@ -154,12 +154,18 @@ class HomeController extends Controller
         //     'views' => rand(300, 1000),
         // ]);
 
-        $post = Post::where('id', 5)->update([
-            'title' => 'test update deh' ,
-            'content' => 'test update content deh' ,
-            'views' => rand(300, 1000),
-        ]);
+        // $post = Post::where('id', 5)->update([
+        //     'title' => 'test update deh' ,
+        //     'content' => 'test update content deh' ,
+        //     'views' => rand(300, 1000),
+        // ]);
 
+        // dd('anjay');
+
+// retrieve only softdeleted data and restoring softdeleted data || forceDelete
+        // Post::withTrashed()->find(4)->restore();
+        // Post::withTrashed()->find(6)->forceDelete();
         dd('anjay');
+        // return Post::onlyTrashed()->get();
     }
 }
