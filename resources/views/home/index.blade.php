@@ -2,45 +2,33 @@
 
 @section('content')
     <main role="main" class="container">
-        <div class="row mt-5">
-            @foreach ($posts as $post)
-                {{-- <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Name : {{$user->name}}</h4>
-                        <h4>Email: {{$user->email}}</h4>
-                        <h4>Adress : {{$user->adress->address}}</h4>
-                        <h4>phone: {{$user->adress->phone}}</h4>
-                    </div>
-                </div>
-            </div> --}}
-                {{-- <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Name : {{$adress->user->name}}</h4>
-                        <h4>Email: {{$adress->user->email}}</h4>
-                        <h4>Adress : {{$adress->address}}</h4>
-                        <h4>phone: {{$adress->phone}}</h4>
-                    </div>
-                </div>
-            </div> --}}
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4>title: {{ $post->title }}</h4>
-                            <h4>description: {{ Str::words($post->content, 5, '...') }}</h4>
-                            <ul>
-                            @foreach ($post->tags as $tag )
-                                <li>{{$tag->name}}</li>
-
-                                
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+       
+        <img src="{{ asset('/storage/images/new_image.jpg') }}" alt="" class="img-fluid">
+        <div class="col-md-5 offset-md-3 mt-5">
+            @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger"> {{ $error }}</div>
+                
             @endforeach
+            
+        @endif
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="">upload</label>
+                            <input type="file" name="image" class="form-control">
+                        </div>
+                        <div class="form-group mt-2">
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </main>
+
+        <a href="{{ route('download')}}" class="btn btn-primary offset-md-3 mt-2">Downlaod</a>
+    </main> 
 @endsection

@@ -8,7 +8,9 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
 use DB;
+use File;
 use Illuminate\Http\Request;
+use Storage;
 
 
 class HomeController extends Controller
@@ -181,18 +183,25 @@ class HomeController extends Controller
         // return view('home.index', compact('categories'));
 
 // many to many
-        $posts = Post::with('tags')->get();
-        $tags = Tag::first();
+        // $posts = Post::with('tags')->get();
+        // $tags = Tag::first();
 
-        // $post->tags()->attach([2,3,4]);
-        // $post->tags()->detach($tags);
+        // // $post->tags()->attach([2,3,4]);
+        // // $post->tags()->detach($tags);
 
-        return view('home.index', compact('posts'));
+        // return view('home.index', compact('posts'));
+
+
+// removing file storage
+        // Storage::delete('/images/image1.jpg');
+        // return view('home.index');
+        // File::delete(storage_path('app/public/images/image2.jpg'));
+        // unlink(storage_path('app/public/images/image3.jpg'));       
         
-
         
-
-
-
-    }
+        // $posts = Post::all();
+        // return response($posts, 200);
+        
+        return view('home.index');
+}
 }

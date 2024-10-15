@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 // use App\Http\Controllers\BlogController;
 // use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,13 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index']);
 // Route::get('/home', HomeController::class); single action Controller
 
+Route::post('/home', [ImageController::class, 'store'])->name('image.store');
+
+Route::get('/success', function () {
+    return '<h1>Successfully upload</h1>';
+})->name('success');
+
+Route::get('/download', [ImageController::class, 'download'])->name('download');
 
 Route::get('about', [AboutController::class, 'index']);
 
