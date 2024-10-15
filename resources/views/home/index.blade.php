@@ -27,8 +27,8 @@
                     </form>
                 </div>
             </div>
+            <a href="{{ route('download')}}" class="btn btn-success  mt-2">Downlaod</a>
         </div>
 
-        <a href="{{ route('download')}}" class="btn btn-primary offset-md-3 mt-2">Downlaod</a>
     </main> 
 @endsection
